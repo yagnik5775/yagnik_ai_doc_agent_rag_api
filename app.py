@@ -6,7 +6,7 @@ from generate_response import generate_response
 # Load environment variables
 load_dotenv()
 
-print("Hello")
+print("He")
 
 app = Flask(__name__)
 
