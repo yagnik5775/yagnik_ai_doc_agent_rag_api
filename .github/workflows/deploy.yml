@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repo
+    - name: Checkout Repository
       uses: actions/checkout@v3
 
     - name: Set up SSH
@@ -19,7 +19,7 @@ jobs:
 
     - name: Copy project files to VPS
       run: |
-        ssh -o StrictHostKeyChecking=no root@82.25.107.5:~/yagnik-ai-api
+        ssh -o StrictHostKeyChecking=no root@82.25.107.5 "mkdir -p ~/yagnik-ai-api"
         scp -r . root@82.25.107.5:~/yagnik-ai-api
 
     - name: Build & Run Docker container on VPS
@@ -27,13 +27,13 @@ jobs:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         API_BEARER_TOKEN: ${{ secrets.API_BEARER_TOKEN }}
       run: |
-        ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
-        cd ~/flaskrestapi
-        docker stop flaskrestapi || true
-        docker rm flaskrestapi || true
-        docker build -t flaskrestapi .
-        docker run -d -p 5001:5000 --name flaskrestapi \
-          -e GROQ_API_KEY="$GROQ_API_KEY" \
-          -e API_BEARER_TOKEN="$API_BEARER_TOKEN" \
-          flaskrestapi
+        ssh -o StrictHostKeyChecking=no root@82.25.107.5 << 'EOF'
+          cd ~/yagnik-ai-api
+          docker stop flaskrestapi || true
+          docker rm flaskrestapi || true
+          docker build -t flaskrestapi .
+          docker run -d -p 5001:5000 --name flaskrestapi \
+            -e GROQ_API_KEY="${GROQ_API_KEY}" \
+            -e API_BEARER_TOKEN="${API_BEARER_TOKEN}" \
+            flaskrestapi
         EOF
