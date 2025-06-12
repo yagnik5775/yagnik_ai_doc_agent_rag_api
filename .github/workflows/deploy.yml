@@ -19,7 +19,7 @@ jobs:
 
     - name: Copy project files to VPS
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "mkdir -p ~/flaskrestapi"
+        ssh -o StrictHostKeyChecking=no root@82.25.107.5:~/yagnik-ai-api
         scp -r . root@82.25.107.5:~/yagnik-ai-api
 
     - name: Build & Run Docker container on VPS
