@@ -15,7 +15,7 @@ API_BEARER_TOKEN = os.getenv("API_BEARER_TOKEN")
 
 @app.route('/')
 def home():
-    return "✅ API is running....."
+    return "✅ API is running......."
 
 print(f"[DEBUG] Loaded Bearer Token: {API_BEARER_TOKEN}")
 
