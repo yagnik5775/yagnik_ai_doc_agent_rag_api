@@ -19,15 +19,15 @@ jobs:
 
     - name: Copy project files to VPS
       run: |
-        ssh -o StrictHostKeyChecking=no root@82.25.107.5 "mkdir -p ~/yagnik-ai-api"
-        scp -r . root@82.25.107.5:~/yagnik-ai-api
+        ssh -o StrictHostKeyChecking=no root@82.25.105.7 "mkdir -p ~/yagnik-ai-api"
+        scp -r . root@82.25.105.7:~/yagnik-ai-api
 
     - name: Build & Run Docker container on VPS
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         API_BEARER_TOKEN: ${{ secrets.API_BEARER_TOKEN }}
       run: |
-        ssh -o StrictHostKeyChecking=no root@82.25.107.5 << 'EOF'
+        ssh -o StrictHostKeyChecking=no root@82.25.105.7 << 'EOF'
           cd ~/yagnik-ai-api
           docker stop flaskrestapi || true
           docker rm flaskrestapi || true
