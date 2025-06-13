@@ -1,15 +1,16 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
- 
+*.py[cod]
+*$py.class
  
 # Virtual environment
-venv/
+myenv/
  
 # Environment variables
 .env
  
 # FAISS index files
-
+# *.faiss
  
 # VSCode settings (optional)
 .vscode/
@@ -19,8 +20,10 @@ venv/
 *.log
 *.tmp
  
-
+# JSON metadata (if generated dynamically and not needed in version control)
+# chunk_metadata.json
+ 
+# rag_data_index.faiss
  
 # Ignore PDFs (optional, if these are just reference materials)
 *.pdf
- 
