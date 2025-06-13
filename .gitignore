@@ -19,8 +19,7 @@ venv/
 *.log
 *.tmp
  
-# JSON metadata (if generated dynamically and not needed in version control)
-chunk_metadata.json
+
  
 # Ignore PDFs (optional, if these are just reference materials)
 *.pdf
