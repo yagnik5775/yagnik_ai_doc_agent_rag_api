@@ -6,7 +6,7 @@ from generate_response import generate_response
 # Load environment variables
 load_dotenv()
 
-print("Helklop")
+print("Working directory:", os.getcwd())
 
 app = Flask(__name__)
 
