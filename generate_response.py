@@ -35,7 +35,7 @@ def generate_response(query):
                         "Do not use external knowledge or make assumptions. If the answer is not found in the text, say: "
                         "'The answer is not available in the provided document.'"
                     )
-                },
+                },  
                 {
                     "role": "user",
                     "content": f"Context:\n{context}\n\nQuestion: {query}\n\nProvide a concise answer based only on the context. If you can't answer from the context, say so."
